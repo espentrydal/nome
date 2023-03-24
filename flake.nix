@@ -10,7 +10,6 @@
     };
     rust-overlay.url = "github:oxalica/rust-overlay";
     riff.url = "github:DeterminateSystems/riff";
-    unison.url = "github:ceedubs/unison-nix";
     nix-init.url = "github:nix-community/nix-init";
   };
 
@@ -21,7 +20,6 @@
     , home-manager
     , rust-overlay
     , riff
-    , unison
     , nix-init
     }:
     let
@@ -42,7 +40,6 @@
           (import rust-overlay)
           (self: super: {
             riff = riff.packages.${system}.riff;
-            ucm = unison.packages.${system}.ucm;
             nix-init = nix-init.packages.${system}.default;
           })
         ] ++ (with self.overlays; [ go node rust ]);
