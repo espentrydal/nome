@@ -33,10 +33,10 @@ let
 in
 [
   (script "cache" ''
-    ${checkForArg1 "no cache specified"}     
+    ${checkForArg1 "no cache specified"}
     nix flake archive --json \
       | ${pkgs.jq}/bin/jq -r '.path,(.inputs|to_entries[].value.path)' \
-      | ${pkgs.cachix}/bin/cachix push $1 
+      | ${pkgs.cachix}/bin/cachix push $1
   '')
 
   (script "docker-clean" ''
@@ -46,7 +46,7 @@ in
   (script "build-push" ''
     ${checkForArg1 "no build attribute specified"}
 
-    nix-build '<nixpkgs>' -A $1 | cachix push lucperkins-dev && rm result
+    nix-build '<nixpkgs>' -A $1 | cachix push espentrydal && rm result
   '')
   (script "crate-hash" ''
     ${checkForArg1 "no package name provided"}
@@ -74,7 +74,7 @@ in
     (cd ~/nx/nixpkgs && git grep $1)
   '')
   (script "proj" ''
-    nix flake init --template github:the-nix-way/nome
+    nix flake init --template github:espentrydal/nome
   '')
   (script "wo" ''
     ${checkForArg1 "no executable specified"}
@@ -106,7 +106,7 @@ in
   (script "dvt" ''
     ${checkForArg1 "no template specified"}
 
-    nix flake init --template github:the-nix-way/dev-templates#$1
+    nix flake init --template github:espentrydal/dev-templates#$1
   '')
 
   (script "cleanup" ''
@@ -118,10 +118,10 @@ in
   (script "dvs" ''
     ${checkForArg1 "no template specified"}
 
-    nix flake init --template github:the-nix-way/nome#$1
+    nix flake init --template github:espentrydal/nome#$1
   '')
 
-  (script "cfg" ''
-    code ${homeDirectory}/the-nix-way/nome
-  '')
+  # (script "cfg" ''
+  #   code ${homeDirectory}/espentrydal/nome
+  # '')
 ]

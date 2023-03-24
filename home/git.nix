@@ -4,8 +4,8 @@
 
 {
   enable = true;
-  userName = "Luc Perkins";
-  userEmail = "lucperkins@gmail.com";
+  userName = "Espen Trydal";
+  userEmail = "espen@trydal.io";
   package = pkgs.gitAndTools.gitFull;
 
   delta = { enable = true; };
@@ -36,10 +36,10 @@
     gpg.program = "gpg2";
 
     protocol.keybase.allow = "always";
-    credential.helper = "osxkeychain";
+    credential.helper = "cache --timeout=86400";
     pull.rebase = "false";
     init.defaultBranch = "main";
 
-    user = { signingkey = "3987C314C5E59CBF"; };
+    user = { signingkey = "72CA36A362E0D73D"; };
   };
 }

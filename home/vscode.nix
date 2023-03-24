@@ -25,8 +25,6 @@ in
     elmtooling.elm-ls-vscode
     esbenp.prettier-vscode
     formulahendry.auto-close-tag
-    #kamikillerto.vscode-colorize
-    lucperkins.vrl-vscode
     ms-azuretools.vscode-docker
     octref.vetur
     redhat.vscode-yaml

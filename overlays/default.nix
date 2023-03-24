@@ -4,7 +4,7 @@
       go = prev.go // {
         CGO_ENABLED = 0;
         GOOS = "linux";
-        GOARCH = "arm64";
+        GOARCH = "x86_64";
       };
     };
   };

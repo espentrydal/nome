@@ -1,3 +1,3 @@
 #!/bin/sh
 
-nix build ".#homeConfigurations.lucperkins.activationPackage"
+nix build ".#homeConfigurations.espen.activationPackage"

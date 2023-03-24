@@ -2,7 +2,7 @@
 
 {
   enable = true;
-  # Sets alias vim=nvim
+  viAlias = true;
   vimAlias = true;
 
   extraConfig = (builtins.readFile ./config/.vimrc);
@@ -13,8 +13,9 @@
     editorconfig-vim
     gruvbox
     nerdtree
+    nvim-tree-lua
     tabular
-    vim-elixir
     vim-nix
+    vim-sensible
   ];
 }

@@ -22,8 +22,13 @@ let
     doppler
   ];
 
-  fonts = with pkgs.nerdfonts;
-    [ (override { fonts = [ "CascadiaCode" "FiraCode" "JetBrainsMono" "Iosevka" ]; }) ];
+  fonts = (with pkgs; [ iosevka-comfy.comfy ])
+          ++ (with pkgs.nerdfonts; [ (override { fonts = [
+                                                   "CascadiaCode"
+                                                   "FiraCode"
+                                                   "JetBrainsMono"
+                                                   "Iosevka"
+                                                 ]; }) ]);
 
   gitTools = with pkgs.gitAndTools;
     [ diff-so-fancy git-codeowners gitflow ]
@@ -39,51 +44,42 @@ let
     minikube
   ];
 
-  macTools = with pkgs.darwin.apple_sdk.frameworks; [
-    CoreServices
-    Foundation
-    Security
-  ];
-
-  jsTools = (with pkgs; [ deno ]) ++ (with pkgs.nodePackages; [
+  jsTools = (with pkgs; [
+    nodejs-18_x # for global npm and npx
+    deno ])
+  ++ (with pkgs.nodePackages; [
     pnpm
     yarn
   ]);
 
   monitoring = with pkgs; [
+    bmon
     bottom
     btop
     htop
+    pciutils
+    usbutils
   ];
 
   # I'll categorize these later :)
   misc = with pkgs; [
-    comma
-    coreutils
-    findutils
     hugo # for initializing projects
     just
     keybase
     libiconv
     ncurses
     neofetch
-    nodejs-18_x # for global npm and npx
     openssl
     pikchr
-    pinentry_mac
     pkg-config
-    podman
+#    podman
     qemu
-    reattach-to-user-namespace # for tmux
-    riff # from overlay
-    subversion
+  ];
+
+  network = with pkgs; [
+    nethogs
     tailscale
-    tree
-    treefmt
-    wget
-    youtube-dl
-    yt-dlp
-    zstd
+    tcptrack
   ];
 
   nixTools = with pkgs; [
@@ -91,36 +87,63 @@ let
     nixfmt
     nixpkgs-fmt
     nix-init
+    nix-prefetch-git
   ];
 
-  pythonTools = with pkgs; [ python310 ] ++ (with pkgs.python310Packages; [
+  pythonTools = with pkgs; [
+    python310
+    poetry
+  ] ++ (with pkgs.python310Packages; [
     #httpie
     pip
     virtualenv
   ]);
 
   rustTools = with pkgs; [
+    riff # from overlay
     rustup # for things like `cargo init`
   ];
+
+  shellTools = with pkgs; [
+    comma
+    coreutils
+    findutils
+    feh
+    fd
+    pass
+    pdfgrep
+    ripgrep
+    tree
+    treefmt
+    wget
+    youtube-dl
+    yt-dlp
+    zip unzip
+    zstd
+  ];
+
 
   # These are broken on aarch64-darwin but I hope to add them someday
   broken = with pkgs; [
     materialize
     ucm # unison programming language
+    reattach-to-user-namespace # for tmux # only for darwin
   ];
+
 in
 bin
 ++ local
 ++ buildTools
-++ databaseTools
-++ devOpsTools
+#++ databaseTools
+#++ devOpsTools
 ++ fonts
 ++ gitTools
-++ kubernetesTools
-++ macTools
+#++ kubernetesTools
 ++ jsTools
 ++ monitoring
 ++ misc
+++ network
 ++ nixTools
 ++ pythonTools
 ++ rustTools
+++ shellTools

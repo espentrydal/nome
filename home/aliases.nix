@@ -17,7 +17,7 @@
     s = "status";
     pr = "pull --rebase";
     st = "status";
-    l =
+    lg =
       "log --graph --pretty='%Cred%h%Creset - %C(bold blue)<%an>%Creset %s%C(yellow)%d%Creset %Cgreen(%cr)' --abbrev-commit --date=relative";
     whoops = "reset --hard";
     wipe = "commit -s";
@@ -31,6 +31,11 @@
 
   shell = {
     # General
+    # l = "ls -la";
+    # la = "ls -a";
+    # ll = "ls -l";
+    e = "emacsclient -nw";
+
     "," = "comma";
     cat = "bat";
     conf = "code ~/.config/nixpkgs";

@@ -3,10 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-22.11";
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager/release-22.11";
@@ -21,7 +17,6 @@
   outputs =
     { self
     , nixpkgs
-    , darwin
     , flake-utils
     , home-manager
     , rust-overlay
@@ -32,8 +27,8 @@
     let
       # Constants
       stateVersion = "22.11";
-      system = "aarch64-darwin";
-      username = "lucperkins";
+      system = "x86_64-linux";
+      username = "espen";
       homeDirectory = self.lib.getHomeDirectory username;
 
       # System-specific Nixpkgs
@@ -55,25 +50,18 @@
 
       # Helper functions
       run = pkg: "${pkgs.${pkg}}/bin/${pkg}";
-
       # Modules
       home = import ./home { inherit homeDirectory pkgs stateVersion system username; };
-    in
-    {
-      darwinConfigurations.${username} = darwin.lib.darwinSystem {
-        inherit system;
-        modules = [ (import ./nix-darwin) ];
-      };
 
+    in
+      {
       homeConfigurations = {
         default = "${username}";
 
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
 
-          modules = [
-            home
-          ];
+          modules = [ home ];
         };
       };
 
@@ -109,7 +97,7 @@
     //
 
     # System-specific stuff
-    flake-utils.lib.eachSystem [ "x86_64-linux" "aarch64-linux" ] (system: {
+    flake-utils.lib.eachSystem [ "x86_64-linux" ] (system: {
       nixosConfigurations =
         let
           modules = [

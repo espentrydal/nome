@@ -41,11 +41,11 @@
     };
   };
 
-  users.users.lucperkins = {
+  users.users.espentrydal = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
-      starship
+#      starship
       vim
       zsh
     ];
