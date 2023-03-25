@@ -91,9 +91,9 @@ let
   ];
 
   pythonTools = with pkgs; [
-    python310
+    python311
     poetry
-  ] ++ (with pkgs.python310Packages; [
+  ] ++ (with pkgs.python311Packages; [
     #httpie
     pip
     virtualenv

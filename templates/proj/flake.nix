@@ -1,3 +1,4 @@
+
 {
   description = "Local dev environment";
 
@@ -6,7 +7,7 @@
   outputs = { self, nome, ... }:
     nome.lib.mkEnv {
       toolchains = with nome.lib.toolchains;
-        node ++ protobuf ++ rust;
+        clojure ++ node ++ python ++ protobuf ++ rust;
       extras = with nome.pkgs; [ jq ];
       shellHook = ''
         echo "Welcome to this Nix-provided project env!"

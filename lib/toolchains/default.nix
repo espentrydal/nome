@@ -35,7 +35,7 @@
   protobuf = with pkgs; [ buf protobuf ];
 
   python = with pkgs; [
-    python310
+    python311
     poetry
     virtualenv
   ]
