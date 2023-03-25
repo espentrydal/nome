@@ -224,9 +224,6 @@ in
     "[rust]" = {
       "editor.defaultFormatter" = "rust-lang.rust-analyzer";
     };
-    "[svelte]" = {
-      "editor.defaultFormatter" = "svelte.svelte-vscode";
-    };
     "[terraform]" = {
       "editor.defaultFormatter" = "hashicorp.terraform";
       "editor.formatOnSave" = false;
@@ -247,9 +244,6 @@ in
     "[txt]" = {
       "editor.formatOnSave" = false;
     };
-    "[vue]" = {
-      "editor.defaultFormatter" = "Vue.volar";
-    };
     "debug.javascript.unmapMissingSources" = true;
     "editor.defaultFormatter" = "esbenp.prettier-vscode";
     "editor.detectIndentation" = false;
@@ -269,19 +263,12 @@ in
       "markdown"
       "mdx"
       "javascript"
-      "javascriptreact"
       "typescript"
-      "typescriptreact"
-      "vue"
     ];
     "inlineFold.supportedLanguages" = [
       "javascript"
       "javascriptreact"
-      "svelte"
       "typescript"
-      "typescriptreact"
-      "vue"
-      "vue-html"
     ];
     "search.exclude" = {
       "**/.direnv" = true;
