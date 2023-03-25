@@ -9,13 +9,6 @@
   enableCompletion = true;
   autocd = false;
 
-  shellAliases = (import ./aliases.nix { inherit homeDirectory; }).shell;
-
-  profileExtra =''
-      export XDG_DATA_DIRS="''$HOME/.nix-profile/share:''$XDG_DATA_DIRS"
-    '';
-  initExtra = (builtins.readFile ./scripts/init.sh);
-
   plugins = [
     {
       name = "zsh-nix-shell";
@@ -39,5 +32,12 @@
     ];
     theme = "agnoster";
   };
+
+  shellAliases = (import ./aliases.nix { inherit homeDirectory; }).shell;
+
+  profileExtra =''
+      export XDG_DATA_DIRS="''$HOME/.nix-profile/share:''$XDG_DATA_DIRS"
+    '';
+  initExtra = (builtins.readFile ./scripts/init.sh);
 
 }
