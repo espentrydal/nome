@@ -120,8 +120,4 @@ in
 
     nix flake init --template github:espentrydal/nome#$1
   '')
-
-  # (script "cfg" ''
-  #   code ${homeDirectory}/espentrydal/nome
-  # '')
 ]
