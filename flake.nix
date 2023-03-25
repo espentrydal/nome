@@ -52,21 +52,39 @@
 
     in
       {
-      homeConfigurations = {
-        default = "${username}";
+        defaultPackage.${system} = home-manager.defaultPackage.${system};
 
-        "${username}" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+        homeConfigurations = {
+          default = "${username}";
 
-          modules = [ home ];
+          "${username}" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+
+            modules = [ home ];
+          };
         };
-      };
 
-      lib = import ./lib {
-        inherit pkgs;
-      };
+        lib = import ./lib {
+          inherit pkgs;
+        };
 
-      overlays = import ./overlays;
+        overlays = import ./overlays;
 
-      };
+      }
+
+      //
+
+      flake-utils.lib.eachSystem [ "x86_64-linux" ] (system: {
+        nixosConfigurations =
+          let
+            modules = [
+              ./nixos/configuration.nix
+              ./nixos/hardware-configuration.nix
+            ];
+          in
+            nixpkgs.lib.nixosSystem {
+              inherit modules system;
+            };
+      });
+
 }
