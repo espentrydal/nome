@@ -8,9 +8,9 @@
       url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-init.url = "github:nix-community/nix-init";
     rust-overlay.url = "github:oxalica/rust-overlay";
     riff.url = "github:DeterminateSystems/riff";
-    nix-init.url = "github:nix-community/nix-init";
   };
 
   outputs =

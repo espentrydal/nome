@@ -24,6 +24,7 @@ let
 
   fonts = with pkgs; [
     cascadia-code
+    emacs-all-the-icons-fonts
     fira-code
     iosevka-comfy.comfy
     iosevka

@@ -79,18 +79,13 @@
   # JSON parsing on the CLI
   jq.enable = true;
 
-  # Kitty terminal emulator
-  kitty = {
-    enable = true;
-  };
-
   # For Git rebases and such
   neovim = import ./neovim.nix {
     inherit (pkgs) vimPlugins;
   };
 
   # Speed up nix search functionality
-  nix-index = {
+  nix-index ={
     enable = true;
     enableZshIntegration = true;
   };
