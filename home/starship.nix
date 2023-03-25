@@ -26,7 +26,8 @@
     };
     hostname = {
       ssh_only = false;
-      format = "on [work-box](bold red) ";
+      format = "[$ssh_symbol$hostname]($style) in ";
+      style = "bold dimmed green";
       disabled = false;
     };
     terraform = { format = "[🏎💨 $version$workspace]($style) "; };
