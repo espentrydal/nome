@@ -6,7 +6,7 @@
   enable = true;
   userName = "Espen Trydal";
   userEmail = "espen@trydal.io";
-  package = pkgs.gitAndTools.gitFull;
+  #package = pkgs.gitAndTools.gitFull; # needs export GIT_SSH="/usr/bin/ssh" to work
 
   delta = { enable = true; };
 
