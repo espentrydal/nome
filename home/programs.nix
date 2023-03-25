@@ -69,7 +69,7 @@
   git = import ./git.nix { inherit homeDirectory pkgs; };
 
   # GPG config
-  gpg.enable = true;
+  gpg.enable = false; # doesn't work with pinentry
 
   # Configure HM itself
   home-manager = {
