@@ -94,20 +94,20 @@
     //
 
     # System-specific stuff
-    flake-utils.lib.eachSystem [ "x86_64-linux" ] (system: {
-      nixosConfigurations =
-        let
-          modules = [
-            ./nixos/configuration.nix
-            ./nixos/hardware-configuration.nix
-          ];
-        in
-        nixpkgs.lib.nixosSystem {
-          inherit modules system;
-        };
-    })
+    # flake-utils.lib.eachSystem [ "x86_64-linux" ] (system: {
+    #   nixosConfigurations =
+    #     let
+    #       modules = [
+    #         ./nixos/configuration.nix
+    #         ./nixos/hardware-configuration.nix
+    #       ];
+    #     in
+    #     nixpkgs.lib.nixosSystem {
+    #       inherit modules system;
+    #     };
+    # })
 
-    //
+    # //
 
     flake-utils.lib.eachSystem [ system ] (system:
     let
