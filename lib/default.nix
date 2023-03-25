@@ -6,6 +6,9 @@ let
   inherit (pkgs.lib) optionals;
 in
 rec {
+  # The toolchains that I commonly use
+  toolchains = import ./toolchains { inherit pkgs; };
+
   # Infer home directory based on system
   getHomeDirectory = username: "/home/${username}";
 
@@ -17,7 +20,4 @@ rec {
         inherit shellHook;
       };
     });
-
-  # The toolchains that I commonly use
-  toolchains = import ./toolchains { inherit pkgs; };
 }
