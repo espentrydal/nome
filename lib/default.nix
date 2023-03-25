@@ -4,13 +4,8 @@
 
 let
   inherit (pkgs.lib) optionals;
-  inherit (pkgs.stdenv) isDarwin isLinux;
 in
 rec {
-  # Add to list only if on a specific system type
-  darwinOnly = ls: optionals isDarwin ls;
-  linuxOnly = ls: optionals isLinux ls;
-
   # Infer home directory based on system
   getHomeDirectory = username:
     if isDarwin then "/Users/${username}" else "/home/${username}";
@@ -25,5 +20,5 @@ rec {
     });
 
   # The toolchains that I commonly use
-  toolchains = import ./toolchains { inherit darwinOnly linuxOnly pkgs; };
+  toolchains = import ./toolchains { inherit pkgs; };
 }

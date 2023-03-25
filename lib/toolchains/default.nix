@@ -1,7 +1,4 @@
-{ darwinOnly
-, linuxOnly
-, pkgs
-}:
+{ pkgs }:
 
 {
   devops = with pkgs; [ flyctl packer terraform vagrant ];
