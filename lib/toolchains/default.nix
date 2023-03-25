@@ -39,7 +39,7 @@
     poetry
     virtualenv
   ]
-  ++ (with pkgs.python310Packages; [
+  ++ (with pkgs.python311Packages; [
     pip
   ]);
 
