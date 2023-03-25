@@ -105,7 +105,7 @@
   };
 
   # The provider of my shell aesthetic
-  #starship = import ./starship.nix;
+  starship = import ./starship.nix;
 
   # My most-used multiplexer
   tmux = {
@@ -129,7 +129,7 @@
   };
 
   # VSCode
-  vscode = import ./vscode.nix { inherit pkgs; };
+  #vscode = import ./vscode.nix { inherit pkgs; };
 
   # My fav shell
   zsh = import ./zsh.nix {
