@@ -7,8 +7,7 @@ let
 in
 rec {
   # Infer home directory based on system
-  getHomeDirectory = username:
-    if isDarwin then "/Users/${username}" else "/home/${username}";
+  getHomeDirectory = username: "/home/${username}";
 
   # Make a custom dev environment
   mkEnv = { toolchains ? [ ], extras ? [ ], shellHook ? "" }:
